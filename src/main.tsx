@@ -19,6 +19,7 @@ import { People } from './pages/People';
 import { Projects } from './pages/Projects';
 import { Events } from './pages/Events';
 import { Consensus } from './pages/Consensus';
+import { Play } from './pages/Play';
 import { PeopleProvider } from './content/PeopleProvider';
 import { projects, projectCategories } from './content';
 import { PawMark } from './components/Mascot';
@@ -31,6 +32,7 @@ import './styles.css';
 import './motion.css';
 import './theme/theme.css';
 import './community.css';
+import './play.css';
 applyPreferences(readPreferences(), false);
 function App() {
   const main = useRef<HTMLElement>(null);
@@ -57,7 +59,7 @@ function App() {
   }, []);
   usePageMotion(main, location.pathname);
   useEffect(() => {
-    document.title = `${location.pathname.startsWith('/assessment') ? '素质问卷' : location.pathname.startsWith('/verify') ? '证书验真' : location.pathname.startsWith('/admin') ? '社团管理' : location.pathname.startsWith('/people') ? '成员名录' : location.pathname.startsWith('/projects') ? '项目工坊' : location.pathname.startsWith('/events') ? '赛事展台' : location.pathname.startsWith('/consensus') ? '社区共识' : '让好奇心，不断加一'} · I++ Club`;
+    document.title = `${location.pathname.startsWith('/assessment') ? '素质问卷' : location.pathname.startsWith('/verify') ? '证书验真' : location.pathname.startsWith('/admin') ? '社团管理' : location.pathname.startsWith('/people') ? '成员名录' : location.pathname.startsWith('/projects') ? '项目工坊' : location.pathname.startsWith('/events') ? '赛事展台' : location.pathname.startsWith('/consensus') ? '社区共识' : location.pathname.startsWith('/play') ? '进位' : '让好奇心，不断加一'} · I++ Club`;
   }, [location.pathname]);
   return (
     <>
@@ -153,6 +155,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/events" element={<Events />} />
           <Route path="/consensus" element={<Consensus />} />
+          <Route path="/play" element={<Play />} />
           <Route path="/assessment" element={<Assessment />} />
           <Route path="/assessment/:id" element={<Assessment />} />
           <Route path="/verify" element={<Verify />} />
@@ -186,6 +189,7 @@ function App() {
           <Link to="/people">成员名录</Link>
           <Link to="/events">赛事展台</Link>
           <Link to="/consensus">社区共识</Link>
+          <Link to="/play">进位</Link>
           <Link to="/admin">社团管理</Link>
         </div>
         <div className="footer-bottom">
